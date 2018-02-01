@@ -24,10 +24,7 @@ class ConsultaAdmin(admin.ModelAdmin):
 
 class OpcionAdmin(admin.ModelAdmin):
 	list_display=['opcion_text','votes','consulta']
-	fieldsets = [
-        (None,               {'fields': ['consulta_text']}),
-        ('Date information', {'fields': ['pub_date' ,'end_date']}),
-    ]
+	
 
 admin.site.register(Consulta , ConsultaAdmin)
 admin.site.register(Opcion , OpcionAdmin)
