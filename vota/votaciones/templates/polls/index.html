@@ -1,0 +1,23 @@
+{% extends "polls/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'votaciones/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-10">
+{% if latest_question_list %}
+    <ul>
+    {% for consulta in latest_question_list %}
+        <li><a href="{{consulta.id}}">{{ consulta.consulta_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+
+{% endblock %}

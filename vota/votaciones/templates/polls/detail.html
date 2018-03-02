@@ -1,0 +1,20 @@
+{% extends "polls/base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'votaciones/style.css' %}" />
+{% endblock %}
+<h1>{{ consulta.consulta_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% block content %}
+	<form action="{% url 'polls:vote' consulta.id %}" method="post">
+	{% csrf_token %}
+	{% for opcion in consulta.opcion_set.all %}
+	    <input type="radio" name="opcion" id="opcion{{ forloop.counter }}" value="{{ opcion.id }}" />
+	    <label for="opcion{{ forloop.counter }}">{{ opcion.opcion_text }}</label><br />
+	{% endfor %}
+	<input type="submit" value="Vote" />
+	</form>
+{% endblock %}

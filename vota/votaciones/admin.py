@@ -11,10 +11,7 @@ class ChoiceInline(admin.StackedInline):
 
 class ConsultaAdmin(admin.ModelAdmin):
 	list_display=['consulta_text','autor','pub_date','end_date']
-	fieldsets = [
-        (None,               {'fields': ['consulta_text']}),
-        ('Date information', {'fields': ['pub_date' ,'end_date']}),
-    ]
+	
 	inlines = [ChoiceInline]
 	def get_queryset(self, request):
 		qs = super().get_queryset(request)
@@ -24,7 +21,7 @@ class ConsultaAdmin(admin.ModelAdmin):
 
 class OpcionAdmin(admin.ModelAdmin):
 	list_display=['opcion_text','votes','consulta']
-	
+
 
 admin.site.register(Consulta , ConsultaAdmin)
 admin.site.register(Opcion , OpcionAdmin)

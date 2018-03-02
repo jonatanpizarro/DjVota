@@ -1,0 +1,18 @@
+{% extends "polls/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'votaciones/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+	{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+
+</form>
+
+{% endblock %}
